@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hehehehehehe</title>
+   
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #dadada;
+}
+p{
+    font-size: 50px;
+    font-weight: 500;
+    color: black;
+
+
+}
+.js{
+color: red;
+}
+.cursor{
+    color: red;
+}
+    </style>
+</head>
+<body>
+    <p>
+        <span class="js">javascript</span> is
+        <span class="typed-text"></span>
+        <span class="cursor">|</span>
+    </p>
+    <script>
+        const typetext = document.querySelector(".typed-text")
+const cursor = document.querySelector(".cursor")
+const words = ["amazinng" , "gud" , "ok"] 
+const typingdelay= 100
+const erasingdelay = 50 
+const newletterdelay = 500
+let index = 0;
+let charindex = 0
+// document.addEventListener("DOMContentLoader" , ()=>{
+//     if(words.length){
+//         setTimeout(type, newletterdelay)
+//     }
+// })
+document.addEventListener("DOMContentLoaded", () => {
+    if (words.length) {
+        setTimeout(type, newletterdelay);
+    }
+});
+
+function type(){
+    if ( charindex < words[index].length){
+        typetext.textContent +=words[index].charAt(charindex)
+        charindex++
+        setTimeout(type, typingdelay)
+    }else{
+        setTimeout(erase, newletterdelay)
+    }
+}
+function erase(){
+    if(charindex > 0){
+        typetext.textContent = words[index].substring(0, charindex-1)
+        charindex--
+        setTimeout(erase, erasingdelay)
+    }else{
+        index++;
+        if(index >= words.length){
+            index = 0 
+        }
+        setTimeout(type, typingdelay+100)
+    }
+}
+    </script>
+</body>
+</html>
